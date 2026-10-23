@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lavou | Artisanal Donuts & Bakes - Vibrant Cafe Digital Menu</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Fredoka for playful header, Outfit for body, Playfair Display for accents -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,500&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cafe: {
+                            pink: '#FFF0F3',
+                            pinkDark: '#FFB7C5',
+                            rose: '#FF6B8B',
+                            terracotta: '#E06D53',
+                            cream: '#FFF9F2',
+                            warmYellow: '#FFE8A3',
+                            caramel: '#D97706',
+                            chocolate: '#4A2C2A',
+                            pistachio: '#E2F0D9',
+                            pistachioDark: '#5E8B43',
+                            mint: '#D1F2EB'
+                        }
+                    },
+                    fontFamily: {
+                        heading: ['Fredoka', 'sans-serif'],
+                        body: ['Outfit', 'sans-serif'],
+                        accent: ['Playfair Display', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #FFF9F2;
+            color: #4A2C2A;
+            font-family: 'Outfit', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* Custom subtle floating animation for background illustrations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-8px) rotate(3deg); }
+        }
+        .animate-float {
+            animation: float 5s ease-in-out infinite;
+        }
+        .animate-float-delayed {
+            animation: float 6s ease-in-out infinite 2.5s;
+        }
+
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Soft bouncy hover for cafe cards */
+        .cafe-card {
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .cafe-card:hover {
+            transform: translateY(-4px);
+        }
+
+        /* Category Tab Active States */
+        .cat-btn.active {
+            background: linear-gradient(135deg, #FF6B8B 0%, #E06D53 100%);
+            color: white;
+            box-shadow: 0 4px 14px rgba(255, 107, 139, 0.35);
+            border-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-cafe-cream text-cafe-chocolate min-h-screen pb-24 relative overflow-x-hidden">
+
+    <!-- Floating Background Cafe Pattern Elements -->
+    <div class="fixed -top-10 -left-10 text-cafe-pinkDark/30 text-8xl pointer-events-none select-none z-0 animate-float">
+        <i class="fa-solid fa-donut"></i>
+    </div>
+    <div class="fixed top-1/3 -right-8 text-cafe-warmYellow/40 text-8xl pointer-events-none select-none z-0 animate-float-delayed">
+        <i class="fa-solid fa-cookie"></i>
+    </div>
+    <div class="fixed bottom-10 -left-6 text-cafe-mint/50 text-8xl pointer-events-none select-none z-0 animate-float">
+        <i class="fa-solid fa-mug-hot"></i>
+    </div>
+
+    <!-- Header Banner -->
+    <header class="relative bg-gradient-to-br from-cafe-pink via-cafe-cream to-cafe-warmYellow/40 pt-8 pb-10 px-4 text-center border-b-4 border-cafe-pinkDark/40 overflow-hidden shadow-sm z-10">
+        
+        <!-- Header Content -->
+        <div class="relative z-10 max-w-xl mx-auto flex flex-col items-center">
+            
+            <!-- Cafe Welcome Tag -->
+            <span class="inline-flex items-center gap-1.5 bg-white/90 text-cafe-rose font-heading font-semibold text-xs px-3.5 py-1 rounded-full shadow-sm mb-3 border border-cafe-pinkDark/30">
+                <i class="fa-solid fa-sparkles text-cafe-caramel"></i> Artisanal Bakery & Cafe Showcase
+            </span>
+            
+            <!-- Logo / Brand Title -->
+            <h1 class="font-heading text-5xl md:text-6xl text-cafe-chocolate font-bold tracking-tight my-1 drop-shadow-xs flex items-center gap-3">
+                <span class="text-cafe-rose"><i class="fa-solid fa-cookie-bite"></i></span>
+                LAVOU
+            </h1>
+            
+            <p class="font-accent italic text-lg md:text-xl text-cafe-terracotta font-medium tracking-wide">
+                Artisanal Donuts, Cakes & Bespoke Bakes
+            </p>
+
+            <!-- Instagram & Location Badges -->
+            <div class="mt-4 flex flex-wrap justify-center items-center gap-2 text-xs font-semibold">
+                <span class="bg-white/80 text-cafe-chocolate px-3 py-1 rounded-full border border-cafe-pinkDark/30 flex items-center gap-1.5 shadow-2xs">
+                    <i class="fa-solid fa-location-dot text-rose-500"></i> Patna, Bihar
+                </span>
+                <a href="https://instagram.com/lavou.bakery" target="_blank" class="bg-gradient-to-r from-purple-500 via-pink-500 to-amber-500 text-white px-3.5 py-1 rounded-full flex items-center gap-1.5 shadow-xs hover:scale-105 transition-transform">
+                    <i class="fa-brands fa-instagram text-sm"></i> @lavou.bakery
+                </a>
+            </div>
+
+            <!-- WhatsApp Call / Order Note CTA -->
+            <div class="mt-4">
+                <a href="https://wa.me/918929034777" target="_blank" 
+                   class="bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-heading font-semibold px-5 py-2.5 rounded-full text-xs uppercase tracking-wider shadow-md hover:shadow-lg hover:scale-105 transition-all flex items-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-base"></i>
+                    <span>Call / WhatsApp: +91 8929034777</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sticky Navigation, Search & Dietary Filter -->
+    <div class="sticky top-0 z-30 bg-white/90 backdrop-blur-md border-b-2 border-cafe-pinkDark/30 shadow-xs">
+        <div class="max-w-3xl mx-auto px-4 py-3">
+            
+            <!-- Search & Dietary Options Row -->
+            <div class="flex flex-col sm:flex-row gap-2.5 mb-3">
+                <!-- Search Box -->
+                <div class="relative flex-1">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-cafe-terracotta text-sm"></i>
+                    <input type="text" id="searchInput" oninput="filterItems()" placeholder="Search donuts, pastries, cakes..." 
+                           class="w-full pl-9 pr-4 py-2 bg-cafe-cream/80 border-2 border-cafe-pinkDark/40 rounded-full text-xs font-medium focus:outline-none focus:border-cafe-rose transition text-cafe-chocolate placeholder:text-stone-400">
+                </div>
+
+                <!-- Dietary Pills Toggle -->
+                <div class="flex items-center justify-center bg-cafe-cream border-2 border-cafe-pinkDark/30 rounded-full p-1 text-xs font-semibold text-cafe-chocolate shadow-inner">
+                    <button onclick="setDiet('all')" id="diet-all" class="diet-btn active px-3.5 py-1 rounded-full transition bg-cafe-rose text-white shadow-2xs">All</button>
+                    <button onclick="setDiet('veg')" id="diet-veg" class="diet-btn px-3.5 py-1 rounded-full transition hover:text-emerald-700 flex items-center gap-1.5">
+                        <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block"></span> Veg
+                    </button>
+                    <button onclick="setDiet('nonveg')" id="diet-nonveg" class="diet-btn px-3.5 py-1 rounded-full transition hover:text-rose-700 flex items-center gap-1.5">
+                        <span class="w-2.5 h-2.5 rounded-full bg-rose-500 inline-block"></span> Non-Veg
+                    </button>
+                </div>
+            </div>
+
+            <!-- Categories Horizontal Scroll -->
+            <div class="flex items-center space-x-2 overflow-x-auto hide-scrollbar py-1 text-xs font-heading font-semibold" id="categoryTabs">
+                <button onclick="setCategory('all')" id="tab-all" class="cat-btn active border-2 border-cafe-pinkDark/40 px-4 py-1.5 rounded-full whitespace-nowrap transition">✨ All Delicacies</button>
+                <button onclick="setCategory('donuts')" id="tab-donuts" class="cat-btn bg-white border-2 border-cafe-pinkDark/30 text-cafe-chocolate hover:border-cafe-rose px-4 py-1.5 rounded-full whitespace-nowrap transition">🍩 Brioche Donuts</button>
+                <button onclick="setCategory('savories')" id="tab-savories" class="cat-btn bg-white border-2 border-cafe-pinkDark/30 text-cafe-chocolate hover:border-cafe-rose px-4 py-1.5 rounded-full whitespace-nowrap transition">🥐 Savories</button>
+                <button onclick="setCategory('cheesecakes')" id="tab-cheesecakes" class="cat-btn bg-white border-2 border-cafe-pinkDark/30 text-cafe-chocolate hover:border-cafe-rose px-4 py-1.5 rounded-full whitespace-nowrap transition">🥧 Cheesecakes & Tarts</button>
+                <button onclick="setCategory('cakes')" id="tab-cakes" class="cat-btn bg-white border-2 border-cafe-pinkDark/30 text-cafe-chocolate hover:border-cafe-rose px-4 py-1.5 rounded-full whitespace-nowrap transition">🍰 Cakes</button>
+                <button onclick="setCategory('pastries')" id="tab-pastries" class="cat-btn bg-white border-2 border-cafe-pinkDark/30 text-cafe-chocolate hover:border-cafe-rose px-4 py-1.5 rounded-full whitespace-nowrap transition">🍪 Pastries & Cookies</button>
+                <button onclick="setCategory('teacakes')" id="tab-teacakes" class="cat-btn bg-white border-2 border-cafe-pinkDark/30 text-cafe-chocolate hover:border-cafe-rose px-4 py-1.5 rounded-full whitespace-nowrap transition">☕ Tea Cakes</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content Grid Area -->
+    <main class="max-w-3xl mx-auto px-4 pt-6 relative z-10">
+        
+        <!-- Category Title Header & Counter -->
+        <div class="flex justify-between items-baseline mb-6 border-b-2 border-cafe-pinkDark/30 pb-2">
+            <h2 id="categoryTitle" class="font-heading text-2xl md:text-3xl font-bold text-cafe-chocolate tracking-tight flex items-center gap-2">
+                All Menu Delicacies
+            </h2>
+            <span id="itemCounter" class="text-xs font-heading font-bold text-cafe-terracotta bg-cafe-warmYellow/60 px-3 py-1 rounded-full"></span>
+        </div>
+
+        <!-- Menu Grid -->
+        <div id="menuContainer" class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <!-- Cards generated dynamically via JavaScript -->
+        </div>
+
+        <!-- Fallback No Items Found -->
+        <div id="noResults" class="hidden text-center py-16 bg-white/70 rounded-3xl border-2 border-dashed border-cafe-pinkDark/40 p-8 my-6">
+            <i class="fa-solid fa-cookie-bite text-5xl text-cafe-rose/60 mb-3 animate-bounce"></i>
+            <p class="font-heading text-xl text-cafe-chocolate font-semibold">No tasty treats matched your filter!</p>
+            <p class="text-stone-500 text-xs mt-1">Try searching for something else or clearing filters.</p>
+            <button onclick="resetFilters()" class="mt-4 bg-cafe-rose text-white px-5 py-2 rounded-full font-heading text-xs font-semibold shadow-xs hover:bg-cafe-terracotta transition">
+                Show All Items
+            </button>
+        </div>
+    </main>
+
+    <!-- Bottom Sticky Contact Bar -->
+    <div class="fixed bottom-3 inset-x-3 max-w-lg mx-auto z-40">
+        <a href="https://wa.me/918929034777" target="_blank" 
+           class="bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-700 text-white p-3 rounded-full shadow-xl flex items-center justify-between border-2 border-white/40 backdrop-blur-xs hover:scale-[1.02] transition-transform">
+            <div class="flex items-center gap-2.5 pl-2">
+                <div class="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center text-lg">
+                    <i class="fa-brands fa-whatsapp text-white"></i>
+                </div>
+                <div class="text-left">
+                    <p class="text-[10px] font-semibold text-emerald-100 uppercase tracking-wider">Direct Cafe Hotline</p>
+                    <p class="text-xs font-heading font-bold leading-tight">Call / WhatsApp: +91 8929034777</p>
+                </div>
+            </div>
+            <span class="bg-white text-emerald-800 text-[11px] font-heading font-bold px-3 py-1.5 rounded-full shadow-xs flex items-center gap-1">
+                Order <i class="fa-solid fa-arrow-right text-[10px]"></i>
+            </span>
+        </a>
+    </div>
+
+    <!-- Full-Screen Lightbox Modal -->
+    <div id="lightboxModal" class="fixed inset-0 bg-stone-900/80 z-50 hidden flex items-center justify-center p-4 backdrop-blur-sm" onclick="closeLightbox()">
+        <div class="relative max-w-md w-full bg-cafe-cream rounded-3xl overflow-hidden shadow-2xl border-4 border-white" onclick="event.stopPropagation()">
+            <!-- Close Button -->
+            <button onclick="closeLightbox()" class="absolute top-3 right-3 bg-stone-900/70 text-white w-9 h-9 rounded-full flex items-center justify-center hover:bg-stone-900 z-10 transition">
+                <i class="fa-solid fa-xmark text-sm"></i>
+            </button>
+            
+            <div class="relative">
+                <img id="lightboxImg" src="" alt="Menu item" class="w-full h-72 object-cover">
+                <div id="lightboxBadge" class="absolute top-3 left-3"></div>
+            </div>
+
+            <div class="p-6 bg-white">
+                <div class="flex justify-between items-start gap-2 mb-2">
+                    <h3 id="lightboxTitle" class="font-heading text-2xl font-bold text-cafe-chocolate"></h3>
+                    <span id="lightboxPrice" class="font-heading text-lg font-bold text-cafe-terracotta bg-cafe-warmYellow/50 px-3 py-1 rounded-full whitespace-nowrap"></span>
+                </div>
+                <p id="lightboxDesc" class="text-stone-600 text-xs leading-relaxed mb-4"></p>
+                
+                <div class="pt-3 border-t border-stone-100 flex justify-between items-center text-xs">
+                    <span class="text-stone-400 font-medium"><i class="fa-solid fa-sparkles text-cafe-caramel"></i> Freshly Baked Daily</span>
+                    <a href="https://wa.me/918929034777" target="_blank" class="text-emerald-600 font-heading font-bold hover:underline flex items-center gap-1">
+                        Inquire via WhatsApp <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Data and Interactive Controller -->
+    <script>
+        const menuData = [
+            // 1. BRIOCHE DONUTS
+            {
+                id: 'bd1',
+                name: 'Vanilla Custard Donut',
+                category: 'donuts',
+                price: '₹140',
+                isVeg: true,
+                desc: 'Soft golden brioche donut filled with real Madagascar vanilla bean custard.',
+                image: 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=800&q=80'
+            },
+            {
+                id: 'bd2',
+                name: 'Rose Pistachio Custard Donut',
+                category: 'donuts',
+                price: '₹200',
+                isVeg: true,
+                desc: 'Infused with aromatic rose custard, pink glaze, and crushed Iranian pistachios.',
+                image: 'https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?auto=format&fit=crop&w=800&q=80'
+            },
+            {
+                id: 'bd3',
+                name: 'Salted Caramel Cheesecake Donut',
+                category: 'donuts',
+                price: '₹180',
+                isVeg: true,
+                desc: 'Creamy cheesecake filling paired with a rich sea-salted caramel core.',
+                image: 'https://images.unsplash.com/photo-1626094309830-abbb0c99da4a?auto=format&fit=crop&w=800&q=80'
+            },
+            {
+                id: 'bd4',
+                name: 'Filter Coffee Custard Donut',
+                category: 'donuts',
+                price: '₹150',
+                isVeg: true,
+                desc: 'Authentic South Indian filter coffee infused custard filling in soft brioche.',
+                image: 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=800&q=80'
+            },
+            {
+                id: 'bd5',
+                name: 'Dark Chocolate Custard Donut',
+                category: 'donuts',
+                price: '₹180',
+                isVeg: true,
+                desc: 'Rich 55% Belgian dark chocolate custard core wrapped in fluffy brioche.',
+                image: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&q=80'
+            },
+            {
+                id: 'bd6',
+                name: 'Nutella Donut',
+                category: 'donuts',
+                price: '₹180',
+                isVeg: true,
+                desc: 'Stuffed with decadent Nutella hazelnut spread and dusted with fine icing sugar.',
+                image: 'https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format&fit=crop&w=800&q=80'
+            },
+            {
+                id: 'bd7',
+                name: 'Tiramisu Donut',
+                category: 'donuts',
+                price: '₹180',
+                isVeg: true,
+                desc: 'Espresso-soaked brioche filled with mascarpone cream and dusted with raw cocoa.',
+                image: 'https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?auto=format&fit=crop&w=800&q=80'
+            },
+            {
+                id: 'bd8',
+                name: 'Vanilla Glazed Donut',
+                category: 'donuts',
+                price: '₹110',
+                isVeg: true,
+                desc: 'Classic melt-in-mouth glazed ring donut with signature vanilla glaze.',
+                image: 'https://images.unsplash.com/photo-1514517220017-8ce97a34a7b6?auto=format&fit=crop&w=800&q=80'
+            },
+            {
+                id: 'bd9',
+                name: 'Chocolate Glazed Donut',
+                category: 'donuts',
+                price: '₹110',
+                isVeg: true,
+                desc: 'Light brioche ring dipped in silky milk chocolate ganache.',
+                image: 'https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?auto=format&fit=crop&w=800&q=80'
+            },
+            {
+                id: 'bd10',
+                name: 'Cinnamon Glazed Donut',
+                category: 'donuts',
+                price: '₹110',
+                isVeg: true,
+                desc: 'Tossed in aromatic Ceylon cinnamon sugar glaze for warm spicy notes.',
+                image: 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=800&q=80'
+            },
+
+            // 2. SAVORIES
+            {
+                id: 'sv1',
+                name: 'Korean Bun',
+                category: 'savories',
+                price: '₹200',
+                isVeg: true,
+                desc: 'Famous Korean cream cheese garlic bun brushed with savory herb butter.',
+                image: 'https://images.unsplash.com/photo-1589367920969-ab8e050bbb04?auto=format&fit=crop&w=800&q=80'
+            },
+            {
+                id: 'sv2',
+                name: 'Spinach and Corn Quiche',
+                category: 'savories',
+                price: '₹165',
+                isVeg: true,
+                desc: 'Flaky pastry tart filled with creamy spinach, sweet corn, and melted cheese.',
+                image: 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=800&q=80'
+            },
+            {
+                id: 'sv3',
+                name: 'Mushroom and Herbs Quiche',
+                category: 'savories',
+                price: '₹200',
+                isVeg: true,
+                desc: 'Sautéed button mushrooms and fresh herbs baked in a rich savory crust.',
+                image: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&q=80'
+            },
+            {
+                id: 'sv4',
+                name: 'Herbed Cream Cheese Donut',
+                category: 'savories',
+                price: '₹185',
+                isVeg: true,
+                desc: 'Savory brioche donut stuffed with garlic-herb cream cheese filling.',
+                image: 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=800&q=80'
+            },
+            {
+                id: 'sv5',
+                name: 'Chicken and Herbs Quiche',
+                category: 'savories',
+                price: '₹250',
+                isVeg: false,
+                desc: 'Tender seasoned chicken and aromatic herbs baked in a flaky pie crust.',
+                image: 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=800&q=80'
+            },
+            {
+                id: 'sv6',
+                name: 'Chicken and Cream Cheese Donut',
+                category: 'savories',
+                price: '₹250',
+                isVeg: false,
+                desc: 'Savory soft brioche filled with spiced shredded chicken and cream cheese.',
+                image: 'https://images.unsplash.com/photo-1589367920969-ab8e050bbb04?auto=format&fit=crop&w=800&q=80'
+            },
+
+            // 3. CHEESECAKES & TARTS
+            {
+                id: 'cs1',
+                name: 'Basque Cheesecake',
+                category: 'cheesecakes',
+                price: '₹190',
+                isVeg: true,
+                desc: 'Authentic caramelized burnt top Basque cheesecake with soft creamy interior.',
+                image: 'https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format&fit=crop&w=800&q=80'
+            },
+            {
+                id: 'cs2',
+                name: 'Basque Cheesecake (Salted Caramel)',
+                category: 'cheesecakes',
+                price: '₹200',
+                isVeg: true,
+                desc: 'Classic Basque slice topped with house-made warm salted caramel drizzle.',
+                image: 'https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?auto=format&fit=crop&w=800&q=80'
+            },
+            {
+                id: 'cs3',
+                name: 'Basque Cheesecake (Chocolate)',
+                category: 'cheesecakes',
+                price: '₹210',
+                isVeg: true,
+                desc: 'Infused with Belgian chocolate ganache for chocolate lovers.',
+                image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=800&q=80'
+            },
+            {
+                id: 'cs4',
+                name: 'Basque Cheesecake (Nutella)',
+                category: 'cheesecakes',
+                price: '₹210',
+                isVeg: true,
+                desc: 'Generously swirled with creamy Nutella hazelnut spread.',
+                image: 'https://images.unsplash.com/photo-1626094309830-abbb0c99da4a?auto=format&fit=crop&w=800&q=80'
+            },
+            {
+                id: 'cs5',
+                name: 'Basque Cheesecake (Blueberry)',
+                category: 'cheesecakes',
+                price: '₹350',
+                isVeg: true,
+                desc: 'Topped with generous wild blueberry fruit compote.',
+                image: 'https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format&fit=crop&w=800&q=80'
+            },
+            {
+                id: 'tb1',
+                name: 'Chocolate Tart',
+                category: 'cheesecakes',
+                price: '₹250',
+                isVeg: true,
+                desc: 'Crisp buttery pastry shell filled with silky smooth dark chocolate ganache.',
+                image: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&q=80'
+            },
+            {
+                id: 'tb2',
+                name: 'Lemon Tart',
+                category: 'cheesecakes',
+                price: '₹250',
+                isVeg: true,
+                desc: 'French tart casing filled with tangy lemon curd and topped with meringue.',
+                image: 'https://images.unsplash.com/photo-1519869325930-281384150729?auto=format&fit=crop&w=800&q=80'
+            },
+
+            // 4. CAKES
+            {
+                id: 'ck1',
+                name: 'Chocolate Truffle Cake',
+                category: 'cakes',
+                price: '₹750 / ₹1400',
+                isVeg: true,
+                desc: 'Rich dark chocolate sponge layered with dense cocoa truffle ganache.',
+                image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=800&q=80'
+            },
+            {
+                id: 'ck2',
+                name: 'Lemon Blueberry White Chocolate Cake',
+                category: 'cakes',
+                price: '₹875 / ₹1700',
+                isVeg: true,
+                desc: 'Zesty lemon sponge with wild blueberry compote and white chocolate frosting.',
+                image: 'https://images.unsplash.com/photo-1535141192574-5d4897c13136?auto=format&fit=crop&w=800&q=80'
+            },
+            {
+                id: 'ck3',
+                name: 'Carrot, Date & Walnut Cake',
+                category: 'cakes',
+                price: '₹800 / ₹1500',
+                isVeg: true,
+                desc: 'Spiced cake packed with fresh carrots, sweet dates, and crunchy walnuts.',
+                image: 'https://images.unsplash.com/photo-1621236378699-8597faf6a176?auto=format&fit=crop&w=800&q=80'
+            },
+            {
+                id: 'ck4',
+                name: 'Red Velvet Cake',
+                category: 'cakes',
+                price: '₹800 / ₹1550',
+                isVeg: true,
+                desc: 'Traditional crimson cocoa sponge layered with silky cream cheese frosting.',
+                image: 'https://images.unsplash.com/photo-1586788680404-32824828d40a?auto=format&fit=crop&w=800&q=80'
+            },
+            {
+                id: 'ck5',
+                name: 'Chocolate Mocha Cake',
+                category: 'cakes',
+                price: '₹725 / ₹1350',
+                isVeg: true,
+                desc: 'Deep chocolate layers infused with freshly roasted coffee espresso buttercream.',
+                image: 'https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?auto=format&fit=crop&w=800&q=80'
+            },
+            {
+                id: 'ck6',
+                name: 'Salted Caramel Dark Chocolate Cake',
+                category: 'cakes',
+                price: '₹775 / ₹1400',
+                isVeg: true,
+                desc: 'Decadent cocoa sponge paired with house-made gooey salted caramel layers.',
+                image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=800&q=80'
+            },
+            {
+                id: 'ck7',
+                name: 'Hummingbird Cake',
+                category: 'cakes',
+                price: '₹1100 / ₹1800',
+                isVeg: true,
+                desc: 'Southern classic spiced pineapple & banana sponge cake with cream cheese glaze.',
+                image: 'https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=800&q=80'
+            },
+            {
+                id: 'ck8',
+                name: 'Rose Pistachio Cake',
+                category: 'cakes',
+                price: '₹950 / ₹1750',
+                isVeg: true,
+                desc: 'Elegant floral rose sponge studded with Iranian pistachios and white chocolate.',
+                image: 'https://images.unsplash.com/photo-1535141192574-5d4897c13136?auto=format&fit=crop&w=800&q=80'
+            },
+            {
+                id: 'ck9',
+                name: 'Moist Chocolate Buttercream Cake',
+                category: 'cakes',
+                price: '₹525 / ₹975',
+                isVeg: true,
+                desc: 'Super moist chocolate cake finished with smooth classic whipped chocolate buttercream.',
+                image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=800&q=80'
+            },
+            {
+                id: 'ck10',
+                name: 'Hot Chocolate Fudge Cake',
+                category: 'cakes',
+                price: '₹700 / ₹1300',
+                isVeg: true,
+                desc: 'Dense, dark fudge layers topped with warm gooey chocolate pour.',
+                image: 'https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?auto=format&fit=crop&w=800&q=80'
+            },
+            {
+                id: 'ck11',
+                name: 'Vanilla Butterscotch Cake',
+                category: 'cakes',
+                price: '₹775 / ₹1450',
+                isVeg: true,
+                desc: 'Fluffy vanilla sponge layered with crunchy butterscotch praline and caramel.',
+                image: 'https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=800&q=80'
+            },
+
+            // 5. PASTRIES & BROWNIES & COOKIES
+            {
+                id: 'ps1',
+                name: 'Chocolate Truffle Pastry (100g)',
+                category: 'pastries',
+                price: '₹165',
+                isVeg: true,
+                desc: 'Single portion slice of dense dark chocolate truffle cake with cocoa glaze.',
+                image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=800&q=80'
+            },
+            {
+                id: 'ps2',
+                name: 'Hummingbird Pastry (100g)',
+                category: 'pastries',
+                price: '₹220',
+                isVeg: true,
+                desc: 'Slice of banana-pineapple spiced pastry with smooth cream cheese topping.',
+                image: 'https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=800&q=80'
+            },
+            {
+                id: 'co1',
+                name: 'Dark Chocolate Sea Salt Cookie',
+                category: 'pastries',
+                price: '₹150',
+                isVeg: true,
+                desc: 'Chewy chocolate chip cookie sprinkled with Maldon sea salt flakes.',
+                image: 'https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=800&q=80'
+            },
+            {
+                id: 'tb3',
+                name: 'Dark Chocolate Brown Butter Brownies',
+                category: 'pastries',
+                price: '₹150',
+                isVeg: true,
+                desc: 'Fudgy, crinkly brown butter brownie baked with dark chocolate chunks.',
+                image: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=800&q=80'
+            },
+
+            // 6. TEA CAKES
+            {
+                id: 'tc1',
+                name: 'Chocolate Glazed Tea Cake',
+                category: 'teacakes',
+                price: '₹350 / ₹650',
+                isVeg: true,
+                desc: 'Classic tea loaf dipped in rich chocolate glaze, perfect with evening tea.',
+                image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=800&q=80'
+            },
+            {
+                id: 'tc2',
+                name: 'Lemon Glazed Tea Cake',
+                category: 'teacakes',
+                price: '₹350 / ₹650',
+                isVeg: true,
+                desc: 'Refreshing citrus tea sponge with tangy lemon icing glaze.',
+                image: 'https://images.unsplash.com/photo-1535141192574-5d4897c13136?auto=format&fit=crop&w=800&q=80'
+            },
+            {
+                id: 'tc3',
+                name: 'Marble Tea Cake',
+                category: 'teacakes',
+                price: '₹450 / ₹800',
+                isVeg: true,
+                desc: 'Swirled vanilla and chocolate sponge cake with rich cocoa aromas.',
+                image: 'https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?auto=format&fit=crop&w=800&q=80'
+            },
+            {
+                id: 'tc4',
+                name: 'Vanilla Almond Tea Cake',
+                category: 'teacakes',
+                price: '₹500 / ₹900',
+                isVeg: true,
+                desc: 'Fragrant vanilla sponge topped with toasted crunchy almond slices.',
+                image: 'https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=800&q=80'
+            }
+        ];
+
+        let activeCategory = 'all';
+        let activeDiet = 'all';
+
+        function renderMenu() {
+            const container = document.getElementById('menuContainer');
+            const searchVal = document.getElementById('searchInput').value.toLowerCase().trim();
+
+            const filtered = menuData.filter(item => {
+                const matchCat = (activeCategory === 'all' || item.category === activeCategory);
+                const matchSearch = item.name.toLowerCase().includes(searchVal) || item.desc.toLowerCase().includes(searchVal);
+                
+                let matchDiet = true;
+                if (activeDiet === 'veg') matchDiet = item.isVeg;
+                if (activeDiet === 'nonveg') matchDiet = !item.isVeg;
+
+                return matchCat && matchSearch && matchDiet;
+            });
+
+            document.getElementById('itemCounter').innerText = `${filtered.length} Items`;
+
+            if (filtered.length === 0) {
+                container.innerHTML = '';
+                document.getElementById('noResults').classList.remove('hidden');
+                return;
+            }
+
+            document.getElementById('noResults').classList.add('hidden');
+
+            container.innerHTML = filtered.map(item => `
+                <div class="cafe-card bg-white rounded-3xl overflow-hidden border-2 border-cafe-pinkDark/30 shadow-xs hover:shadow-lg transition-all flex flex-col justify-between group">
+                    
+                    <!-- Image Card Header -->
+                    <div class="relative overflow-hidden cursor-pointer" onclick="openLightbox('${item.id}')">
+                        <img src="${item.image}" alt="${item.name}" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+                        
+                        <!-- Top Left Diet Badge -->
+                        <div class="absolute top-3 left-3">
+                            ${item.isVeg ? `
+                                <span class="bg-white/95 text-emerald-700 border border-emerald-500 text-[11px] px-2.5 py-0.5 rounded-full font-heading font-bold shadow-xs flex items-center gap-1.5">
+                                    <span class="w-2 h-2 rounded-full bg-emerald-500"></span> Veg
+                                </span>
+                            ` : `
+                                <span class="bg-white/95 text-rose-700 border border-rose-500 text-[11px] px-2.5 py-0.5 rounded-full font-heading font-bold shadow-xs flex items-center gap-1.5">
+                                    <span class="w-2 h-2 rounded-full bg-rose-500"></span> Non-Veg
+                                </span>
+                            `}
+                        </div>
+
+                        <!-- Zoom Hint Overlay -->
+                        <div class="absolute inset-0 bg-cafe-chocolate/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <span class="bg-white/90 text-cafe-chocolate text-xs font-heading font-bold px-3 py-1.5 rounded-full shadow-md flex items-center gap-1">
+                                <i class="fa-solid fa-expand text-cafe-rose"></i> Tap to View
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Item Details -->
+                    <div class="p-4 flex-1 flex flex-col justify-between">
+                        <div>
+                            <!-- Header & Price -->
+                            <div class="flex justify-between items-start gap-2 mb-1.5">
+                                <h3 class="font-heading font-bold text-lg text-cafe-chocolate group-hover:text-cafe-rose transition leading-snug">
+                                    ${item.name}
+                                </h3>
+                                <span class="font-heading font-bold text-sm text-cafe-terracotta bg-cafe-warmYellow/60 px-2.5 py-1 rounded-full whitespace-nowrap shadow-2xs border border-amber-300/40">
+                                    ${item.price}
+                                </span>
+                            </div>
+
+                            <!-- Description -->
+                            <p class="text-stone-500 text-xs leading-relaxed line-clamp-2 mt-1">
+                                ${item.desc}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function setCategory(cat) {
+            activeCategory = cat;
+            document.querySelectorAll('.cat-btn').forEach(btn => {
+                btn.classList.remove('active', 'bg-cafe-rose', 'text-white');
+                btn.classList.add('bg-white', 'text-cafe-chocolate');
+            });
+
+            const activeTab = document.getElementById(`tab-${cat}`);
+            if (activeTab) {
+                activeTab.classList.add('active');
+                activeTab.classList.remove('bg-white', 'text-cafe-chocolate');
+            }
+
+            const categoryTitles = {
+                'all': 'All Menu Delicacies',
+                'donuts': '🍩 Brioche Donuts',
+                'savories': '🥐 Savories',
+                'cheesecakes': '🥧 Cheesecakes & Tarts',
+                'cakes': '🍰 Artisanal Cakes',
+                'pastries': '🍪 Pastries & Cookies',
+                'teacakes': '☕ Classic Tea Cakes'
+            };
+            document.getElementById('categoryTitle').innerText = categoryTitles[cat] || 'Menu Items';
+            renderMenu();
+        }
+
+        function setDiet(diet) {
+            activeDiet = diet;
+            document.querySelectorAll('.diet-btn').forEach(btn => {
+                btn.classList.remove('active', 'bg-cafe-rose', 'text-white');
+                btn.classList.add('text-cafe-chocolate');
+            });
+            const activeBtn = document.getElementById(`diet-${diet}`);
+            if (activeBtn) {
+                activeBtn.classList.add('active', 'bg-cafe-rose', 'text-white');
+            }
+            renderMenu();
+        }
+
+        function filterItems() {
+            renderMenu();
+        }
+
+        function resetFilters() {
+            document.getElementById('searchInput').value = '';
+            setDiet('all');
+            setCategory('all');
+        }
+
+        function openLightbox(id) {
+            const item = menuData.find(i => i.id === id);
+            if (!item) return;
+
+            document.getElementById('lightboxImg').src = item.image;
+            document.getElementById('lightboxTitle').innerText = item.name;
+            document.getElementById('lightboxPrice').innerText = item.price;
+            document.getElementById('lightboxDesc').innerText = item.desc;
+
+            const badgeContainer = document.getElementById('lightboxBadge');
+            badgeContainer.innerHTML = item.isVeg ? `
+                <span class="bg-white/95 text-emerald-700 border border-emerald-500 text-xs px-3 py-1 rounded-full font-heading font-bold shadow-xs flex items-center gap-1.5">
+                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span> 100% Veg
+                </span>
+            ` : `
+                <span class="bg-white/95 text-rose-700 border border-rose-500 text-xs px-3 py-1 rounded-full font-heading font-bold shadow-xs flex items-center gap-1.5">
+                    <span class="w-2.5 h-2.5 rounded-full bg-rose-500"></span> Contains Non-Veg / Egg
+                </span>
+            `;
+
+            document.getElementById('lightboxModal').classList.remove('hidden');
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightboxModal').classList.add('hidden');
+        }
+
+        // Initialize display
+        window.onload = function() {
+            renderMenu();
+        };
+    </script>
+</body>
+</html>
